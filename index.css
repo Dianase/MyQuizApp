@@ -6,21 +6,69 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css
   *
 */
-*{
+
+html{
 box-sizing: border-box;
+background-image: url(/tchbckgrnd.png);
+background-repeat: round;
+width: 100%;
 }
 
 
-h1{
-font-family: 'Courier New', Courier, monospace;
 
-}
-
-main{
+.start-page{
+  display: flex;
+  font-size: 35px;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
   border: black solid 3px;
+  color:greenyellow;
+  font-family: monospace;
+  padding:80px;
 }
 
-.start-button{
-color: green;
+.question-page{
+  display: flex;
+  font-size: 35px;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  border: black solid 3px;
+  background-color:greenyellow;
+  font-family: monospace;
+  padding:80px;
+  opacity: 0.8;
 }
+
+.score-page{
+  display: flex;
+  font-size: 35px;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  border: black solid 3px;
+  background-color: aquamarine;
+  font-family: monospace;
+  padding:80px;
+}
+
+.submit-answer-button{
+  padding:40px;
+}
+
+.multiple-choice-button{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.correct-answer{
+color: greenyellow;
+font-size: 40px;
+font-family: monospace;
+display: flex;
+text-align:center;
+}
+
+

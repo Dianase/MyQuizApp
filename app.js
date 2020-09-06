@@ -1,54 +1,65 @@
+'use strict';
 
 let questions = [
   {
-    question: 'What is the most current version of JavaScript?',
+    question: 'When was the first iPhone launched?',
     answers: [
-      '4',
-      '5',
-      '6',
-      '7'
+      '2004',
+      '2005',
+      '2006',
+      '2007'
     ],
-    correctAnswer: '6'
+    correctAnswer: '2007'
   },
   {
-    question: 'What is used for testing in JavaScript?',
+    question: 'Which of these is NOT a computer?',
     answers: [
-      'console.log',
-      'console.lag',
-      'console.return',
-      'return.log'
+      'Lenovo',
+      'Apple',
+      'Dell',
+      'Lada'
     ],
-    correctAnswer: 'console.log'
+    correctAnswer: 'Lada'
   },
   {
-    question: 'Which symbol is used to reference jQuery?',
+    question: 'Which social media app only allows user to view pictures and messages for a limited time?',
     answers: [
-      '$',
-      '@',
-      '%',
-      '!'
+      'Instagram',
+      'Facebook',
+      'Snapchat',
+      'Tinder'
     ],
-    correctAnswer: '$'
+    correctAnswer: 'Snapchat'
   },
   {
     question: 'Who created JavaScript?',
     answers: [
-      'James Gosling',
-      'Al Gore',
+      'Bill Gates',
+      'Nikola Tesla',
       'Brendan Eich',
       'Steve Jobs'
     ],
     correctAnswer: 'Brendan Eich'
   },
   {
-    question: 'What type of syntax is used in JavaScript?',
+    question: 'What operating system did google create?',
     answers: [
-      'snake case',
-      'camel case',
-      'brief case',
-      'donkey case'
+      'Windows',
+      'iOS',
+      'Android',
+      'Blackberry OS'
     ],
-    correctAnswer: 'camel case'
+    correctAnswer: 'Android'
+  },
+  {
+    question: 'Which of these is not a programming language?',
+    answers: [
+      'Javascript',
+      'CSS',
+      'Python',
+      'C#'
+    ],
+    correctAnswer: 'CSS'
   }
 ];
 

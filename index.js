@@ -1,11 +1,9 @@
-
+'use strict';
 /**
  *
  * Technical requirements:
  *
  * Your app should include a render() function, that regenerates the view each time the store is updated.
- * See your course material, consult your instructor, and reference the slides for more details.
- *
  * NO additional HTML elements should be added to the index.html file.
  *
  * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
@@ -56,7 +54,7 @@ let score = 0;
 function renderStartPage() {
   let pageContent = `
     <div class="start-page">
-      <h1>Gauge your JavaScript Knowledge</h1>
+      <h1>Test your Tech Knowledge</h1>
       <h3>Click the button below to get started</h3>
       <button type="button" class= "start-button">Take the Quiz!</button>
     </div>`;
@@ -64,9 +62,9 @@ function renderStartPage() {
   $('main').html(pageContent);
 }
 
-//Keep in mind that certain elements will not 'exists' at the beginning so you must use selectors that do exist and add the .classes as a parameter of listener
+//certain elements will not 'exists' at the beginning so you must use selectors that do exist and add the .classes as a parameter of listener
 
-//Group listeners together so that they all exist once the page load.
+//Group listeners together so that they all exist once the page load. also known as a callback function
 
 $(function () {
 
@@ -77,6 +75,7 @@ $(function () {
   submitAnswer();
 
   startOver();
+
 })
 
 function startListener() {
@@ -86,27 +85,38 @@ function startListener() {
   })
 }
 
+function renderCorrectAnswer() {
+  $('.correct-answer').html(`INCORRECT! The Correct Answer is: ${questions[questionCounter].correctAnswer} </div>`);
+
+
+}
+
 function submitAnswer() {
   $('main').on('click', '.submit-button', function () {
-    //console.log('purple dragon majesty hello');
+
     //check if the user's selected answer matches the correctAnswer.
     //we need the selected answer =>$('input[type=radio]:checked').val()
-    console.log($('input[type=radio]:checked').val());//value of checked radio
+    console.log($('input[type=checkbox]:checked').val());//value of checked radio
     console.log(questions[questionCounter].correctAnswer);//value of correct answer
-    if ($('input[type=radio]:checked').val() ==
+    if ($('input[type=checkbox]:checked').val() ===
       //we need the correct answer
       questions[questionCounter].correctAnswer) {
       score++;
-      console.log(score);
+      $('.correct-answer').html(`${questions[questionCounter].correctAnswer} - is Correct!`);
+    }else {
+      renderCorrectAnswer();
     }
+
     questionCounter++; //updates the current question by going up one.
 
-    if (questionCounter <= 4) {
+    
+
+    if (questionCounter <= 5) {
       renderQuestion();
     } else {
       renderScore(score);
     }
-  })
+  });
 }
 
 function renderQuestion() {
@@ -114,16 +124,18 @@ function renderQuestion() {
 
   let pageContent = `
   <div class="question-page">
-    <p class="current-question">${questions[questionCounter].question}</p>
+  <span>Question number ${questionCounter + 1}:</span>
+      <h2 class="current-question">${questions[questionCounter].question}</h2>
     <div class="multiple-choice-button"></div>
     <div class="submit-answer-button"><button type="button" class="submit-button">Submit</button>
     </div>
-  </div>`
+  <span>Score: ${score}</span>
+  </div>`;
 
   $('main').html(pageContent);
 
   for (let i = 0; i < questions[questionCounter].answers.length; i++) {
-    $('.multiple-choice-button').append(`<input type="radio" name ="multiple-choice-answer" value="${questions[questionCounter].answers[i]}"><label>${questions[questionCounter].answers[i]}</label>`);
+    $('.multiple-choice-button').append(`<input type="checkbox" name ="multiple-choice-answer" value="${questions[questionCounter].answers[i]}" required="required"><label>${questions[questionCounter].answers[i]}</label>`);
   }
 
 }
@@ -131,11 +143,11 @@ function renderQuestion() {
 function renderScore(score) {
   let pageContent = `
   <div class="score-page">
-    <p class="score-prompt">${score}</p>
+    <h1 class="score-prompt">Your Final Score is: ${score} !</h1>
     
     <div class="start-over-button"><button type="button" class="start-over-button">Start over</button>
     </div>
-  </div>`
+  </div>`;
 
   $('main').html(pageContent);
 }
@@ -143,6 +155,7 @@ function renderScore(score) {
 function startOver() {
   $('main').on('click', '.start-over-button', function () {
     $('.score-page').hide();
+    $('.correct-answer').hide();
     renderStartPage();
   })
 }
