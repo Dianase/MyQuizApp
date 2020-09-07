@@ -86,8 +86,8 @@ function startListener() {
 }
 
 function renderCorrectAnswer() {
-  $('.correct-answer').html(`INCORRECT! The Correct Answer is: ${questions[questionCounter].correctAnswer} </div>`);
-
+  $('.correct-answer').html(`<div class="incorrect">INCORRECT! The Correct Answer is: ${questions[questionCounter].correctAnswer} </div>`);
+ 
 
 }
 
@@ -124,18 +124,20 @@ function renderQuestion() {
 
   let pageContent = `
   <div class="question-page">
-  <span>Question number ${questionCounter + 1}:</span>
-      <h2 class="current-question">${questions[questionCounter].question}</h2>
+    <form>
+    <span>Question number ${questionCounter + 1}:</span>
+    <h2 class="current-question">${questions[questionCounter].question}</h2>
     <div class="multiple-choice-button"></div>
     <div class="submit-answer-button"><button type="button" class="submit-button">Submit</button>
+    </form>
     </div>
-  <span>Score: ${score}</span>
+  <span class="score">Score: ${score}</span>
   </div>`;
 
   $('main').html(pageContent);
 
   for (let i = 0; i < questions[questionCounter].answers.length; i++) {
-    $('.multiple-choice-button').append(`<input type="checkbox" name ="multiple-choice-answer" value="${questions[questionCounter].answers[i]}" required="required"><label>${questions[questionCounter].answers[i]}</label>`);
+    $('.multiple-choice-button').append(`<input type="checkbox" name ="multiple-choice-answer" value='${questions[questionCounter].answers[i]}' required><label>${questions[questionCounter].answers[i]}</label>`);
   }
 
 }
@@ -143,12 +145,11 @@ function renderQuestion() {
 function renderScore(score) {
   let pageContent = `
   <div class="score-page">
-    <h1 class="score-prompt">Your Final Score is: ${score} !</h1>
-    
+    <h1 class="score-prompt">Your Final Score is: ${score}!</h1>
     <div class="start-over-button"><button type="button" class="start-over-button">Start over</button>
     </div>
   </div>`;
-
+  $('.correct-answer').hide();
   $('main').html(pageContent);
 }
 

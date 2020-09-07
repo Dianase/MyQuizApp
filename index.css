@@ -14,7 +14,11 @@ background-repeat: round;
 width: 100%;
 }
 
-
+button:hover{
+  border: groove;
+  background: black;
+  color:aquamarine;
+}
 
 .start-page{
   display: flex;
@@ -25,19 +29,19 @@ width: 100%;
   border: black solid 3px;
   color:greenyellow;
   font-family: monospace;
-  padding:80px;
+  padding:60px;
 }
 
 .question-page{
   display: flex;
-  font-size: 35px;
+  font-size: 25px;
   flex-direction: column;
   text-align: center;
   align-items: center;
   border: black solid 3px;
   background-color:greenyellow;
   font-family: monospace;
-  padding:80px;
+  padding:40px;
   opacity: 0.8;
 }
 
@@ -68,7 +72,18 @@ color: greenyellow;
 font-size: 40px;
 font-family: monospace;
 display: flex;
-text-align:center;
+text-align: center;
+align-items: center;
 }
 
+.incorrect{
+  color:crimson;
+}
 
+.score{
+  color:rgb(27, 61, 173);
+}
+
+label{
+  padding:10px;
+}
