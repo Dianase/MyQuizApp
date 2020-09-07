@@ -7,13 +7,12 @@
   *
 */
 
-html{
+html {
 box-sizing: border-box;
 background-image: url(/tchbckgrnd.png);
 background-repeat: round;
 width: 100%;
 background-color: rgb(36, 54, 54);
-
 }
 
 button:hover{
