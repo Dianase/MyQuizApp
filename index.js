@@ -139,8 +139,9 @@ function renderQuestion() {
   for (let i = 0; i < questions[questionCounter].answers.length; i++) {
     $('.multiple-choice-button').append(`<input type="checkbox" name ="multiple-choice-answer" value='${questions[questionCounter].answers[i]}' required><label>${questions[questionCounter].answers[i]}</label>`);
   }
-
+  
 }
+
 
 function renderScore(score) {
   let pageContent = `
