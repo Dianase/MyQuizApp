@@ -56,7 +56,7 @@ function renderStartPage() {
     <div class="start-page">
       <h1>Test your Tech Knowledge</h1>
       <h3>Click the button below to get started</h3>
-      <button type="button" class= "start-button">Take the Quiz!</button>
+      <button type= "button" class= "start-button">Take the Quiz!</button>
     </div>`;
 
   $('main').html(pageContent);
@@ -92,13 +92,15 @@ function renderCorrectAnswer() {
 }
 
 function submitAnswer() {
-  $('main').on('click', '.submit-button', function () {
-
+  $('main').on('click', '.submit-button', function (e) {
+    e.preventDefault();
     //check if the user's selected answer matches the correctAnswer.
     //we need the selected answer =>$('input[type=radio]:checked').val()
-    console.log($('input[type=checkbox]:checked').val());//value of checked radio
+    console.log($('input[type=radio]:checked').val());//value of checked radio
     console.log(questions[questionCounter].correctAnswer);//value of correct answer
-    if ($('input[type=checkbox]:checked').val() ===
+
+
+    if ($('input[type=radio]:checked').val() ===
       //we need the correct answer
       questions[questionCounter].correctAnswer) {
       score++;
@@ -107,8 +109,10 @@ function submitAnswer() {
       renderCorrectAnswer();
     }
 
+   
+    
     questionCounter++; //updates the current question by going up one.
-
+    
     
 
     if (questionCounter <= 5) {
@@ -117,6 +121,11 @@ function submitAnswer() {
       renderScore(score);
     }
   });
+
+
+  
+
+
 }
 
 function renderQuestion() {
@@ -128,25 +137,27 @@ function renderQuestion() {
     <span>Question number ${questionCounter + 1}:</span>
     <h2 class="current-question">${questions[questionCounter].question}</h2>
     <div class="multiple-choice-button"></div>
-    <div class="submit-answer-button"><button type="button" class="submit-button">Submit</button>
-    </form>
+    <div class="submit-answer-button"><button type="button" class="submit-button multiple-choice-answer">Submit</button>
     </div>
+    </form>
   <span class="score">Score: ${score}</span>
   </div>`;
 
   $('main').html(pageContent);
 
   for (let i = 0; i < questions[questionCounter].answers.length; i++) {
-    $('.multiple-choice-button').append(`<input type="checkbox" name ="multiple-choice-answer" value='${questions[questionCounter].answers[i]}' required><label>${questions[questionCounter].answers[i]}</label>`);
+    $('.multiple-choice-button').append(`<input type="radio" name ="multiple-choice-answer" value='${questions[questionCounter].answers[i]}' required="required"><label>${questions[questionCounter].answers[i]}</label>`);
   }
   
+ 
+
 }
 
 
 function renderScore(score) {
   let pageContent = `
   <div class="score-page">
-    <h1 class="score-prompt">Your Final Score is: ${score}!</h1>
+    <h1 class="score-prompt">Your Final Score is: ${score} out of 6!</h1>
     <div class="start-over-button"><button type="button" class="start-over-button">Start over</button>
     </div>
   </div>`;
@@ -159,6 +170,7 @@ function startOver() {
     $('.score-page').hide();
     $('.correct-answer').hide();
     renderStartPage();
+    
   })
 }
 //Keep in mind that certain elements will not 'exists' at the beginning of the page so you must use selectors that do exist (such as the main element)and add the .classes as a parameter of listener
