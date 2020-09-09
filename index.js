@@ -92,8 +92,8 @@ function renderCorrectAnswer() {
 }
 
 function submitAnswer() {
-  $('main').on('click', '.submit-button', function (e) {
-    e.preventDefault();
+  $('main').on('click', '.submit-button', function () {
+    
     //check if the user's selected answer matches the correctAnswer.
     //we need the selected answer =>$('input[type=radio]:checked').val()
     console.log($('input[type=radio]:checked').val());//value of checked radio
@@ -122,7 +122,7 @@ function submitAnswer() {
     }
   });
 
-
+  
   
 
 
@@ -146,7 +146,7 @@ function renderQuestion() {
   $('main').html(pageContent);
 
   for (let i = 0; i < questions[questionCounter].answers.length; i++) {
-    $('.multiple-choice-button').append(`<input type="radio" name ="multiple-choice-answer" value='${questions[questionCounter].answers[i]}' required="required"><label>${questions[questionCounter].answers[i]}</label>`);
+    $('.multiple-choice-button').append(`<label>${questions[questionCounter].answers[i]}</label><input type="radio" name ="multiple-choice-answer" value='${questions[questionCounter].answers[i]}' required >`);
   }
   
  
@@ -170,8 +170,9 @@ function startOver() {
     $('.score-page').hide();
     $('.correct-answer').hide();
     renderStartPage();
-    
   })
+
+
 }
 //Keep in mind that certain elements will not 'exists' at the beginning of the page so you must use selectors that do exist (such as the main element)and add the .classes as a parameter of listener
 
