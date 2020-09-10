@@ -28,6 +28,8 @@
  * Example store structure
  */
 
+//Keep in mind that certain elements will not 'exists' at the beginning of the page so you must use selectors that do exist (such as the main element)and add the .classes as a parameter of listener
+
 /////////////////////////////////////////////////////////////////MY PLAN/////////////////////////////////////////
 
 //Step 1- Display Start Page- when the page loads the renderStartPage function will execute and display the name of the Quiz along with the "Start the Quiz" button.
@@ -46,7 +48,7 @@
 
 //Step 6- Repeat Step 3 through 5 until the user is in the last question
 
-//Step 7- When the user is in the last question and submitted and answer a [RESULTS] button will appear and display the score. ==>> when questionCounter == questions.length -1 
+//Step 7- When the user is in the last question and submitted and answer a [RESULTS]  will appear and display the score. ==>> when questionCounter == questions.length -1 
 
 let questionCounter = 0;
 let score = 0;
@@ -76,6 +78,9 @@ $(function () {
 
   startOver();
 
+  renderQuestion();
+
+ 
 })
 
 function startListener() {
@@ -94,10 +99,14 @@ function renderCorrectAnswer() {
 function submitAnswer() {
   $('main').on('click', '.submit-button', function () {
     
+    if(!$('input:checked').val()){
+
+      return alert("You must select an answer!");
+    }
     //check if the user's selected answer matches the correctAnswer.
     //we need the selected answer =>$('input[type=radio]:checked').val()
-    console.log($('input[type=radio]:checked').val());//value of checked radio
-    console.log(questions[questionCounter].correctAnswer);//value of correct answer
+    // console.log($('input[type=radio]:checked').val());//value of checked radio
+    // console.log(questions[questionCounter].correctAnswer);//value of correct answer
 
 
     if ($('input[type=radio]:checked').val() ===
@@ -153,7 +162,6 @@ function renderQuestion() {
 
 }
 
-
 function renderScore(score) {
   let pageContent = `
   <div class="score-page">
@@ -167,14 +175,20 @@ function renderScore(score) {
 
 function startOver() {
   $('main').on('click', '.start-over-button', function () {
+    questionCounter = 0;
+    score = 0;
     $('.score-page').hide();
     $('.correct-answer').hide();
     renderStartPage();
-  })
-
+    console.log(questionCounter, "coming from startOver");
+    
+  });
 
 }
-//Keep in mind that certain elements will not 'exists' at the beginning of the page so you must use selectors that do exist (such as the main element)and add the .classes as a parameter of listener
+
+
+
+
 
 
 
