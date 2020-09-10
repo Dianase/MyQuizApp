@@ -182,6 +182,7 @@ function startOver() {
     $('.correct-answer').hide();
    renderQuestion();
    renderCorrectAnswer();
+   submitAnswer();
     console.log(questionCounter, "coming from startOver");
 
   });
