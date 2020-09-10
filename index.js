@@ -179,10 +179,9 @@ function startOver() {
     questionCounter = 0;
     score = 0;
     $('.score-page').hide();
-    $('.correct-answer').hide();
-   renderQuestion();
-   renderCorrectAnswer();
-   submitAnswer();
+    renderQuestion();
+    renderCorrectAnswer();
+    
     console.log(questionCounter, "coming from startOver");
 
   });
