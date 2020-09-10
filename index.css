@@ -12,8 +12,8 @@ box-sizing: border-box;
 background-image: url('./tchbckgrnd.png');
 background-repeat: round;
 width: 100%;
-background-color: rgb(36, 54, 54);
 }
+
 
 button:hover{
   border: groove;
@@ -23,7 +23,7 @@ button:hover{
 
 .start-page{
   display: flex;
-  font-size: 35px;
+  font-size: 33px;
   flex-direction: column;
   text-align: center;
   align-items: center;
@@ -31,8 +31,6 @@ button:hover{
   color:greenyellow;
   font-family: monospace;
   padding:60px;
-background-color: rgb(36, 54, 54);
-
 }
 
 .question-page{
@@ -45,7 +43,7 @@ background-color: rgb(36, 54, 54);
   background-color:greenyellow;
   font-family: monospace;
   padding:40px;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .score-page{

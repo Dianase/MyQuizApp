@@ -100,26 +100,16 @@ function submitAnswer() {
 
       return alert("You must select an answer!");
     }
-    //check if the user's selected answer matches the correctAnswer.
-    //we need the selected answer =>$('input[type=radio]:checked').val()
-    // console.log($('input[type=radio]:checked').val());//value of checked radio
-    // console.log(questions[questionCounter].correctAnswer);//value of correct answer
-
-
+       
     if ($('input[type=radio]:checked').val() ===
-      //we need the correct answer
+      
       questions[questionCounter].correctAnswer) {
       score++;
       $('.correct-answer').html(`${questions[questionCounter].correctAnswer} - is Correct!`);
     } else {
       renderCorrectAnswer();
     }
-
-
-
-    questionCounter++; //updates the current question by going up one.
-
-
+     questionCounter++; //updates the current question by going up one.
 
     if (questionCounter <= 5) {
       renderQuestion();
@@ -176,9 +166,7 @@ function startOver() {
     score = 0;
     $('.score-page').hide();
     renderQuestion();
-
     console.log(questionCounter, "coming from startOver");
-
   });
 
 }
