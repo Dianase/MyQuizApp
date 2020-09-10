@@ -78,10 +78,7 @@ $(function () {
 
   startOver();
 
-  renderQuestion();
-
-
-
+  
 })
 
 function startListener() {
@@ -179,8 +176,8 @@ function startOver() {
     questionCounter = 0;
     score = 0;
     $('.score-page').hide();
+    renderStartPage();
     renderQuestion();
-    renderCorrectAnswer();
     
     console.log(questionCounter, "coming from startOver");
 
