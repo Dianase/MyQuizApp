@@ -78,7 +78,7 @@ $(function () {
 
   startOver();
 
-  
+
 })
 
 function startListener() {
@@ -90,8 +90,7 @@ function startListener() {
 
 function renderCorrectAnswer() {
   $('.correct-answer').html(`<div class="incorrect">INCORRECT! The Correct Answer is: ${questions[questionCounter].correctAnswer} </div>`);
-
-
+  $('.correct-answer').show();
 }
 
 function submitAnswer() {
@@ -176,9 +175,8 @@ function startOver() {
     questionCounter = 0;
     score = 0;
     $('.score-page').hide();
-    renderStartPage();
     renderQuestion();
-    
+
     console.log(questionCounter, "coming from startOver");
 
   });
