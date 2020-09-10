@@ -80,7 +80,8 @@ $(function () {
 
   renderQuestion();
 
- 
+
+
 })
 
 function startListener() {
@@ -92,14 +93,14 @@ function startListener() {
 
 function renderCorrectAnswer() {
   $('.correct-answer').html(`<div class="incorrect">INCORRECT! The Correct Answer is: ${questions[questionCounter].correctAnswer} </div>`);
- 
+
 
 }
 
 function submitAnswer() {
   $('main').on('click', '.submit-button', function () {
-    
-    if(!$('input:checked').val()){
+
+    if (!$('input:checked').val()) {
 
       return alert("You must select an answer!");
     }
@@ -114,15 +115,15 @@ function submitAnswer() {
       questions[questionCounter].correctAnswer) {
       score++;
       $('.correct-answer').html(`${questions[questionCounter].correctAnswer} - is Correct!`);
-    }else {
+    } else {
       renderCorrectAnswer();
     }
 
-   
-    
+
+
     questionCounter++; //updates the current question by going up one.
-    
-    
+
+
 
     if (questionCounter <= 5) {
       renderQuestion();
@@ -131,8 +132,8 @@ function submitAnswer() {
     }
   });
 
-  
-  
+
+
 
 
 }
@@ -157,8 +158,8 @@ function renderQuestion() {
   for (let i = 0; i < questions[questionCounter].answers.length; i++) {
     $('.multiple-choice-button').append(`<label>${questions[questionCounter].answers[i]}</label><input type="radio" name ="multiple-choice-answer" value='${questions[questionCounter].answers[i]}' required >`);
   }
-  
- 
+
+
 
 }
 
@@ -179,9 +180,10 @@ function startOver() {
     score = 0;
     $('.score-page').hide();
     $('.correct-answer').hide();
-    renderStartPage();
+   renderQuestion();
+   renderCorrectAnswer();
     console.log(questionCounter, "coming from startOver");
-    
+
   });
 
 }
